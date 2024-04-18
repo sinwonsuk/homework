@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 //Console.WriteLine("dsd");
@@ -393,3 +394,452 @@ using System.Text;
 //{
 //    Console.WriteLine("숫자가 아닙니다");
 //}
+
+// 문제 17 행렬의 곱을 계산하시오 
+
+//int[,] A = new int[2,2];
+//int[,] B = new int[2, 2];
+//int[,] Value = new int[2, 2];
+//for (int k = 0; k < 2; k++)
+//{
+//    for (int i = 1; i < 3; i++)
+//    {
+//        for (int j = 1; j < 3; j++)
+//        {
+//            Console.WriteLine("{0}행 {1}열을 입력해주세요", i, j);
+
+//            String Str_Num = Console.ReadLine();
+
+//            int Num = int.Parse(Str_Num);
+
+//            if (k == 0)
+//            {
+//                A[i - 1, j - 1] = Num;
+//            }
+
+//            if (k == 1)
+//            {
+//                B[i - 1, j - 1] = Num;
+//            }
+//        }
+//    }
+
+//}
+
+//Value[0, 0] = A[0, 0] * B[0, 0] + A[0, 1] * B[1, 0];
+//Value[0, 1] = A[0, 0] * B[0, 1] + A[0, 1] * B[1, 1];
+//Value[1, 0] = A[1, 0] * B[0, 0] + A[1, 1] * B[1, 0];
+//Value[1, 1] = A[1, 0] * B[0, 1] + A[1, 1] * B[1, 1];
+
+//for (int i = 0; i < 2; i++)
+//{
+//    for(int j = 0;j <2; j++)
+//    {
+//        Console.Write(Value[i,j]+ " ");
+//    }
+//    Console.WriteLine();
+//}
+
+// 문제 18 배열을 거꾸로 출력시키기 배열을 사용해 6개의 숫자를 입력받고 ​6개의 숫자를 거꾸로 출력시키는예제를 만들어 보세요.
+// 
+
+//int[] Arr = new int[6];
+
+//for (int i = 0; i < Arr.Length; i++)
+//{
+//    Console.WriteLine("값을 입력해주세요");
+
+//     String Str_Num = Console.ReadLine();
+
+//    int Num = int.Parse(Str_Num);
+
+//    Arr[i] = Num;
+//}
+
+//for (int i = Arr.Length; i > 0;i--)
+//{
+//    Console.WriteLine(Arr[i-1]+ " ");
+//}
+
+
+
+// 문제 19 배열을 사용해 홀수와 짝수를 구분해 출력시키기
+
+//int[] odd_number = new int[5];
+//int[] Even_number = new int[5];
+
+//int A = -1;
+//int B = -1;
+
+//for (int i = 0; i < 5; i++)
+//{
+//    Console.WriteLine("값을 입력해주세요");
+
+//    String Str_Num = Console.ReadLine();
+
+//    int Num = int.Parse(Str_Num);
+
+//    if(Num % 2 == 0)
+//    {
+//        A++;
+//        Even_number[A] = Num;    
+//    }
+//    else
+//    {
+//        B++;
+//        odd_number[B] = Num;
+//    } 
+//}
+
+
+//for (int i = 0; i <= A; i++)
+//{
+//    Console.Write(Even_number[i] + " ");
+//}
+//Console.WriteLine();
+
+//for (int i = 0; i <= B; i++)
+//{
+//    Console.Write(odd_number[i] + " ");
+//}
+
+// 문제 20 오름 차 순으로 정렬된 숫자 6개가 저장되는 배열을 선언해 주시고​
+
+//숫자를 입력받았을 때 그 숫자가 배열 안에서 자기 자리를 찾아가는​
+
+//프로그램을 만들어보세요.​
+
+
+//int[] Arr = new int[6];
+
+//for (int i = 0; i < Arr.Length-1; i++)
+//{
+//    Console.WriteLine("값을 입력해주세요");
+
+//    String Str_Num = Console.ReadLine();
+
+//    int Num = int.Parse(Str_Num);
+
+//    Arr[i] = Num;
+
+//}
+
+
+//{
+//    Console.WriteLine("중간에 넣을 값을 입력해주세요");
+//    String Str_Num = Console.ReadLine();
+//    int Num = int.Parse(Str_Num);
+//    Arr[5] = Num;
+//}
+
+//for (int i = 0; i < Arr.Length; i++)
+//{
+
+//    for (int j = 0+i; j < Arr.Length; j++)
+//    {
+//        if (Arr[i] < Arr[j])
+//        {
+
+//        }
+//        else if (Arr[i] > Arr[j])
+//        {
+//            int Prev_Num = Arr[i];
+
+//            Arr[i] = Arr[j];
+
+//            Arr[j] = Prev_Num;
+//        }
+//    }
+//}
+
+//for (int i = 0; i < Arr.Length; i++)
+//{
+//    Console.WriteLine(Arr[i] + " ");
+//}
+
+
+// 문제 21 사용자로부터 5개의 정수를 배열로 입력 받은 후 숫자 하나를 추가로 입력 받아 ​
+
+//그 수가 배열에 몇개 존재하는 지를 출력하는 프로그램을 작성하시오.​
+
+
+//int[] Arr = new int[5];
+
+//for (int i = 0; i < Arr.Length; i++)
+//{
+//    Console.WriteLine("값을 입력해주세요");
+
+//    String Str_Num = Console.ReadLine();
+
+//    int Num = int.Parse(Str_Num);
+
+//    Arr[i] = Num;
+//}
+//{
+//    Console.WriteLine("찾을 값을 입력해주세요");
+
+//    String Str_Num = Console.ReadLine();
+
+//    int Num = int.Parse(Str_Num);
+
+//    int Value = 0; 
+
+//    for (int i = 0;i < Arr.Length;i++)
+//    {
+//        if (Arr[i] == Num) 
+//        {
+//            Value++;
+//        }
+//    }
+
+//    Console.WriteLine(Value + "개 존재합니다");
+//}
+
+// 문제 22 1~5 사이의 랜덤한 값이 10개 저장된 배열에서 중복된 값이 제거된 배열을 만들어주세요.​
+
+//int[] Arr = new int[10];
+//int[] Arr_02 = new int[10];
+//int[] Arr_03 = new int[10];
+//int Index = 0;
+//for (int i = 0; i < Arr.Length; i++)
+//{
+//    Random random = new Random();
+//    int Num = random.Next(1,5);
+//    Arr[i] = Num;
+//}
+
+//for (int i = 0; i < Arr.Length; i++)
+//{
+//    Console.Write(Arr[i] + " ");
+
+
+//}
+
+//Console.ReadLine();
+
+//for (int i = 0; i < Arr.Length; i++)
+//{
+//    for (int j = 0; j < Arr.Length; j++)
+//    {
+//        if (Arr[i] == Arr[j])
+//        {
+//            Arr_02[j] = Arr[i];
+//            break;
+//        }
+//    }       
+//}
+
+//for (int i = 0; i < Arr_02.Length; i++)
+//{
+//    if (Arr_02[i] != 0)
+//    {
+//        Arr_03[Index++] = Arr_02[i];
+//    }
+//}
+
+//Array.Resize(ref Arr_03, Index);
+
+//for(int i = 0; i < Arr_03.Length; i++)
+//{
+//    Console.Write(Arr_03[i] + " ");
+//}
+
+// 숙제 23 
+
+//string[,] Arr = new string[3, 3];
+
+//for (int i = 0; i < 3; i++)
+//{
+//    for (int j = 0; j < 3; j++)
+//    {
+//       // string Str = Console.WriteLine("({0},{1})",i,j);
+
+//        Arr[i, j] = "(" + i + "," + j + ")";
+//    }
+//}
+
+//for (int i = 0; i < 3; i++)
+//{
+//    for (int j = 0; j < 3; j++)
+//    {
+//        Console.Write(Arr[i, j]);      
+//    }
+//    Console.WriteLine();
+//}
+
+// 숙제 24 
+
+//int[,] Arr = new int[4, 4];
+
+//int Num = 0;
+
+//for (int i = 0; i < 4; i++)
+//{
+
+//	for (int j = 0; j < 4; j++)
+//	{
+//		Arr[i, j] = (i+1 + j+ Num);
+
+//	}
+//    Num += 3;
+//}
+//for (int i = 0; i < 4; i++)
+//{
+//	for(int j = 0;j < 4; j++)
+//	{
+//        Console.Write(Arr[i, j]+ " ");
+//    }
+//	Console.WriteLine();
+//}
+
+// 숙제 25
+
+//int[,] Arr = new int[4, 4];
+//Random ramdom = new Random(); 
+
+
+//for (int i = 0; i < 4; i++)
+//{
+//    for (int j = 0; j < 4; j++)
+//    {
+//        if(j==3)
+//        {
+//            Arr[i, j] = Arr[i, 0]+ Arr[i, 1]+ Arr[i, 2];
+//        }
+//        else
+//        {
+//            int Num = ramdom.Next(1, 10);
+//            Arr[i, j] = Num;
+//        }
+//    }
+//}
+
+//for (int i = 0;i < 4; i++)
+//{
+//    for(int j = 0;j < 4; j++)
+//    {
+//        Console.Write(Arr[i, j] + " ");
+//    }
+//    Console.WriteLine();
+//}
+
+// 숙제 26
+
+//int Num = 0;
+//int Num_02 = 0;
+//bool Num_Check = false;
+
+//void Check(String Letter, out int num)
+//{
+//    while (true)
+//    {
+//        Console.Write(Letter);
+
+//        String Str_Num = Console.ReadLine();
+
+//        Num_Check = int.TryParse(Str_Num, out num);
+
+//        if (Num_Check == false)
+//        {
+//            Console.WriteLine("잘못 다시 입력해주세요");          
+//        }
+//        else if (num <= 0 || num > 10)
+//        {
+//            Console.WriteLine("잘못 다시 입력해주세요");     
+//        }
+//        else if(Num_Check == true)
+//        {
+//            break;
+//        }
+//    }
+
+
+//}
+
+//Random random = new Random();
+
+//while (true)
+//{
+//  // 여기다 넣으면 계속 생성되나? Random random = new Random();
+
+
+//    Check("행크기 : " , out Num);
+
+
+
+//    Check("열크기 : ", out Num_02);
+
+
+
+//    char[,] Arr = new char[Num, Num_02];
+
+//    for (int i = 0; i < Num; i++)
+//    {
+//        for (int j = 0; j < Num_02; j++)
+//        {
+//            Arr[i, j] = (char)random.Next(65, 90);
+//        }
+//    }
+
+
+//    for (int i = 0; i < Num; i++)
+//    {
+//        for (int j = 0; j < Num_02; j++)
+//        {
+//            Console.Write(Arr[i, j]+ " ");
+
+//        }
+//        Console.WriteLine();
+//    }
+
+//    break;
+
+//}
+
+// 숙제 27 
+
+// 초기 설정 
+//Console.Write("행의 크기 : ");
+
+//String Str_Num = Console.ReadLine();
+
+//int Num = int.Parse(Str_Num);
+
+//char[][] Arr = new char[Num][];
+
+//int ASCII = 97;
+
+
+//// 반복 
+
+//for (int i = 0; i < Num; i++)
+//{
+//    int num = 0;
+//    Console.Write("{0}열의 크기 : ",i);
+
+//    Str_Num = Console.ReadLine();
+
+//    num = int.Parse(Str_Num);
+
+//    Arr[i] = new char[num];
+//}
+
+//for (int i = 0; i < Num; i++)
+//{
+//    for (int j = 0; j < Arr[i].Length; j++)
+//    {
+//        Arr[i][j] = (char)ASCII;
+//        ASCII++;
+//    }
+//}
+
+
+//for (int i = 0; i < Num; i++)
+//{
+//    for (int j = 0; j < Arr[i].Length; j++)
+//    {
+//        Console.Write(Arr[i][j]+ " ");
+//    }
+//    Console.WriteLine();
+//}
+
