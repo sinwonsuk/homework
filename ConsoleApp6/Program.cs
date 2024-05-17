@@ -1,9 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+#define TEST_ENV
+
 using System;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.IO;
 using System.Numerics;
 using System.Security.AccessControl;
 using System.Text;
@@ -1563,17 +1567,17 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //class Base_Movie
 //{
-//    protected string Title = "";
-//    protected string Genre = "";
-//    protected int Score = 0;
-//    protected int RunningTime = 100;
+//    protected string Title { get; set; }
+//    protected string Genre { get; set; }
+//    protected int Score { get; set; }
+//    protected int RunningTime { get; set; }
 
 //    virtual public void Start()
 //    {
 
 //    }
 
-//    virtual public void State()
+//    virtual public void Print_State()
 //    {
 
 //    }
@@ -1589,7 +1593,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        RunningTime = 130;
 //    }
 
-//    override public void State()
+//    override public void Print_State()
 //    {
 //        Console.WriteLine("제목 : " + Title);
 //        Console.WriteLine("장르 : " + Genre);
@@ -1609,7 +1613,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        RunningTime = 150;
 //    }
 
-//    override public void State()
+//    override public void Print_State()
 //    {
 //        Console.WriteLine("제목 : " + Title);
 //        Console.WriteLine("장르 : " + Genre);
@@ -1630,7 +1634,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        RunningTime = 50;
 //    }
 
-//    override public void State()
+//    override public void Print_State()
 //    {
 //        Console.WriteLine("제목 : " + Title);
 //        Console.WriteLine("장르 : " + Genre);
@@ -1652,59 +1656,72 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        Arr[2] = new Move_03();
 //    }
 
+//    public void Print_Choice()
+//    {
+//        Console.WriteLine("보고 싶은 영화를 골라주세요");
+
+//        Console.WriteLine();
+
+//        Console.WriteLine("0 : Move_01");
+//        Console.WriteLine("1 : Move_02");
+//        Console.WriteLine("2 : Move_03");
+//        Console.WriteLine("3 : 종료");
+//    }
+
+//    public void Choice_Number()
+//    {
+//        string num = Console.ReadLine();
+
+//        int Num = int.Parse(num);
+
+
+//        switch (Num)
+//        {
+//            case 0:
+//                {
+//                    Arr[0].Start();
+//                    Arr[0].Print_State();
+//                    Console.WriteLine();
+//                }
+//                break;
+//            case 1:
+//                {
+//                    Arr[1].Start();
+//                    Arr[1].Print_State();
+//                    Console.WriteLine();
+//                }
+//                break;
+//            case 2:
+//                {
+//                    Arr[2].Start();
+//                    Arr[2].Print_State();
+//                    Console.WriteLine();
+//                }
+//                break;
+//            case 3:
+//                {
+//                    return;
+//                }
+
+//            default:
+//                break;
+//        }
+//    }
+
+
+
 
 //    public void Update()
 //    {
 //        while (true)
 //        {
-//            Console.WriteLine("보고 싶은 영화를 골라주세요");
-
-//            Console.WriteLine();
-
-//            Console.WriteLine("0 : Move_01");
-//            Console.WriteLine("1 : Move_02");
-//            Console.WriteLine("2 : Move_03");
-//            Console.WriteLine("3 : 종료");
-
-//            string num = Console.ReadLine();
-
-//            int Num = int.Parse(num);
-
-
-//            switch (Num)
-//            {
-//                case 0:
-//                    {
-//                        Arr[0].Start();
-//                        Arr[0].State();
-//                        Console.WriteLine();
-//                    }
-//                    break;
-//                case 1:
-//                    {
-//                        Arr[1].Start();
-//                        Arr[1].State();
-//                        Console.WriteLine();
-//                    }
-//                    break;
-//                case 2:
-//                    {
-//                        Arr[2].Start();
-//                        Arr[2].State();
-//                        Console.WriteLine();
-//                    }
-//                    break;
-//                case 3:
-//                    {
-//                        return;
-//                    }
-
-//                default:
-//                    break;
-//            }
+//            Print_Choice();
+//            Choice_Number();
 //        }
 //    }
 //}
+
+// 애매하네 생성자를 쓰는게 맞나 
 
 //Interface face = new Interface();
 
@@ -1712,40 +1729,59 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 //class Rect
-//{ 
-//    protected int x= 0; 
-//    protected int y =0;
-//    protected int extent;
+//{
+//    protected int x { get; set; }
+//    protected int y { get; set; }
+//    protected int extent { get; set; }
 
-
-//    virtual public void Set()
+//    void Print_X()
 //    {
 //        Console.Write("x : ");
+//    }
 
+//    void Print_Y()
+//    {
+//        Console.Write("x : ");
+//    }
+
+//    void Change_x_To_Number()
+//    {
 //        string StrNum = Console.ReadLine();
 
 //        int Num = int.Parse(StrNum);
 
 //        x = Num;
+//    }
 
-//        Console.Write("y : ");
+//    void Change_y_To_Number()
+//    {
+//        string StrNum = Console.ReadLine();
 
-//        string StrNum_ = Console.ReadLine();
+//        int Num = int.Parse(StrNum);
 
-//        int Num_ = int.Parse(StrNum_);
+//        y = Num;
+//    }
 
-//        y = Num_;
+//    public void print_Area()
+//    {
+//        Console.WriteLine("넓이 : " + extent);
+//    }
+//    virtual public void Set()
+//    {
+//        Print_X();
+
+//        Change_x_To_Number();
+
+//        Print_Y();
+
+//        Change_y_To_Number();
 //    }
 
 
-//   virtual public void Area()
+//   public void Calculate_Area()
 //   {
-//        extent = x * y;
-
-//        Console.WriteLine("넓이 : " + extent);
-
+//        extent = x * y;       
 //   }
-
 //}
 
 
@@ -1757,13 +1793,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        x = 5;
 //        y = 10;
 //    }
-
-//    public override void Area()
-//    {
-//        base.Area();
-//    }
-
-
 //}
 
 //class rhombus : Rect
@@ -1773,17 +1802,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        x = 10;
 //        y = 10;
 //    }
-
-
-//    public override void Area()
-//    {
-//        extent = (x * y) / 2;
-
-
-//        Console.WriteLine("넓이 : " + extent);
-//    }
-
-
 //}
 
 //class square : Rect
@@ -1823,51 +1841,71 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        Arr[2] = new square();
 //    }
 
+//    public void  Print_Choice_Window()
+//    {
+//        Console.WriteLine("사각형을 골라주세요");
+//        Console.WriteLine();
+//        Console.WriteLine("0 : 직사각형");
+//        Console.WriteLine("1 : 마름모");
+//        Console.WriteLine("2 : 정사각형");
+//        Console.WriteLine("3 : 종료");
+//    }
+
+//    int Change_Str_to_Number()
+//    {
+//        string num = Console.ReadLine();
+
+//        int Num = int.Parse(num);
+
+//        return Num;
+//    }
+
+
+//    void Choice_Number_Rect()
+//    {      
+//        switch (Change_Str_to_Number())
+//        {
+//            case 0:
+//                {
+//                    Arr[0].Set();
+//                    Arr[0].Calculate_Area();
+//                    Arr[0].print_Area();
+
+//                }
+//                break;
+//            case 1:
+//                {
+//                    Arr[1].Set();
+//                    Arr[1].Calculate_Area();
+//                    Arr[1].print_Area();
+
+//                }
+//                break;
+//            case 2:
+//                {
+//                    Arr[2].Set();
+//                    Arr[2].Calculate_Area();
+//                    Arr[2].print_Area();
+
+//                }
+//                break;
+//            case 3:
+//                {
+//                    return;
+//                }
+//            default:
+//                break;
+//        }
+//    }
+
+
+
 //     public void Update()
 //     {
 //         while (true)
 //         {
-//             Console.WriteLine("사각형을 골라주세요");
-//             Console.WriteLine();
-//             Console.WriteLine("0 : 직사각형");
-//             Console.WriteLine("1 : 마름모");
-//             Console.WriteLine("2 : 정사각형");
-//             Console.WriteLine("3 : 종료");
-
-//             string num = Console.ReadLine();
-
-//             int Num = int.Parse(num);
-
-//             switch (Num)
-//             {
-//                 case 0:
-//                     {
-//                        Arr[0].Set();
-//                        Arr[0].Area();
-//                         Console.WriteLine();
-//                     }
-//                     break;
-//                 case 1:
-//                     {
-//                        Arr[1].Set();
-//                        Arr[1].Area();
-//                        Console.WriteLine();
-//                     }
-//                     break;
-//                 case 2:
-//                     {
-//                        Arr[2].Set();
-//                        Arr[2].Area();
-//                        Console.WriteLine();
-//                     }
-//                     break;
-//                 case 3:
-//                     {
-//                         return;
-//                     }
-//                 default:
-//                     break;
-//             }
+//            Print_Choice_Window();
+//            Choice_Number_Rect();
 //         }
 //     }
 
@@ -2010,10 +2048,14 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //{
 //    private string Address = "192.1.1.2";
 
-//    public override void printProperty()
+//    public IPTV()
 //    {
 //        Pixel = 2048;
+//    }
 
+
+//    public override void printProperty()
+//    {     
 //        Console.WriteLine("나의 IPTV는"+ Address + "주소의" + inch + "인치" + Pixel + "컬러출력");
 //    }
 
@@ -2022,67 +2064,89 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 // 문제 4 
 
-//Convert convert = new Convert();
+//Converter convert = new Converter();
 
 //Won2Dollor won2Dollor = new Won2Dollor();
-//won2Dollor.Run();
+//won2Dollor.Print_Reselt();
 
 //class Converter
 //{
 //    protected float Dollor = 0;
 
-//    public Converter()
+//    void Print_Change_Won_To_Dollor()
 //    {
 //        Console.WriteLine("원을 달러로 바꿉니다");
 //        Console.WriteLine("원을 입력하세요");
+//    }
 
+//    void Change_Str_To_Number()
+//    {
 //        System.String Str_Won = Console.ReadLine();
 
-//        Dollor = float.Parse(Str_Won)/1200;
+//        Dollor = float.Parse(Str_Won) / 1200;
+//    }
+
+
+//    public Converter()
+//    {
+//        Print_Change_Won_To_Dollor();
+//        Change_Str_To_Number();
 //    }
 //}
 //class Won2Dollor : Converter
 //{
-//    public void Run()
+//    public void Print_Reselt()
 //    {
-
 //        Console.WriteLine("변환결과 :" + Dollor + "달러입니다");
-
 //        Console.WriteLine();
 //    }
 //}
 
 // 문제 5 
 
-//Convert convert = new Convert();
-
 //Km2Mile km2Mile = new Km2Mile();
-//km2Mile.Run();
+//km2Mile.Print_Result();
 
 //class Converter
 //{
 //    protected float Mile = 0;
 
-//    public Converter()
+//    void Print_Km_To_Mile()
 //    {
 //        Console.WriteLine("Km를 Mile로 바꿉니다");
 //        Console.WriteLine("km를 입력해주세요");
+//    }
 
+//    void Change_Km_To_Mile()
+//    {
+//        Mile = Change_Str_To_Number() * (float)1.6;
+//    }
+
+//    int Change_Str_To_Number()
+//    {
 //        System.String Str_Km = Console.ReadLine();
 
-//        Mile = float.Parse(Str_Km) * (float)1.6;
+//        int Num = int.Parse(Str_Km);
+
+//        return Num;
+
+//    }
 
 
+//    public Converter()
+//    {
+
+//        Print_Km_To_Mile();
+//        Change_Km_To_Mile();
 //    }
 //}
 //class Km2Mile : Converter
 //{
-//    public void Run()
+//    public void Print_Result()
 //    {
 
 //        Console.WriteLine("변환결과 :" + Mile + "입니다");
 
-//        Console.WriteLine();
 //    }
 //}
 
@@ -2501,42 +2565,90 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 // 문제 6
 
-GameCharacter[] Arr = new GameCharacter[5];
+//GameCharacter[] Arr = new GameCharacter[5];
 
-Arr[0] = new Hobbit();
+//Arr[0] = new Hobbit();
 
-Arr[1] = new Sorcerer();
+//Arr[1] = new Sorcerer();
 
-Arr[2] = new GameCharacter();
+//Arr[2] = new GameCharacter();
 
-while (true)
+//while (true)
+//{
+//    Arr[0].Draw();
+//    Arr[1].Draw();
+//    Arr[2].Draw();
+//}
+
+
+//class GameCharacter
+//{
+//    public virtual void Draw()
+//    {
+//        Console.WriteLine("그립니다");
+//    }
+
+//}
+//class Hobbit : GameCharacter
+//{
+//    public override void Draw()
+//    {
+//        Console.WriteLine("호빗을 그립니다");
+//    }
+//}
+
+//class Sorcerer : GameCharacter
+//{
+//    public override void Draw()
+//    {
+//        Console.WriteLine("주술사를 그립니다");
+//    }
+//}
+
+
+//#define PROD_ENV
+
+
+
+
+class Manager
 {
-    Arr[0].Draw();
-    Arr[1].Draw();
-    Arr[2].Draw();
-}
 
-
-class GameCharacter
-{
-    public virtual void Draw()
+    static public void CheatMode_On()
     {
-        Console.WriteLine("그립니다");
+        #if (TEST_ENV)
+        {
+            Console.WriteLine("치트모드 활성화");
+        }
+        #endif
+        {
+
+        }
     }
 
-}
-class Hobbit : GameCharacter
-{
-    public override void Draw()
+    static public void CheatMode_Off()
     {
-        Console.WriteLine("호빗을 그립니다");
+        
+
+        #if (TEST_ENV == false)
+        {
+             Console.WriteLine("치트모드 비활성화");
+        }
+        #endif
+        {
+
+        }
     }
 }
 
-class Sorcerer : GameCharacter
-{
-    public override void Draw()
-    {
-        Console.WriteLine("주술사를 그립니다");
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
