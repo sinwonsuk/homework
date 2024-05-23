@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Numerics;
 using System.Security.AccessControl;
 using System.Text;
@@ -1648,7 +1649,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //{
 //    private Base_Movie[] Arr = new Base_Movie[3];
 
-
 //    public Movie_Interface()
 //    {      
 //        Arr[0] = new Move_01();
@@ -1980,14 +1980,20 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 // 문제 1
 
 
-//MyFriendDetailInfo myFriendDetailInfo = new MyFriendDetailInfo();
+//MyFriendInfo myFriendDetailInfo = new MyFriendDetailInfo();
 //myFriendDetailInfo.ShowMyFriendInfo(); 
 
 //class MyFriendInfo
 //{
+
 //    protected string Name = "이순신"; 
 //    protected int Age = 100;
 
+//    public virtual void ShowMyFriendInfo()
+//    {
+//        Console.WriteLine(Name);
+//        Console.WriteLine(Age);
+//    }
 //}
 
 //class MyFriendDetailInfo : MyFriendInfo
@@ -1995,10 +2001,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //    private string Address = "성균관";
 //    private string Phone_Number = "010-1000-8888";
 
-//    public void ShowMyFriendInfo()
+//    public override void ShowMyFriendInfo()
 //    {
-//        Console.WriteLine(Name);
-//        Console.WriteLine(Age);
+//        base.ShowMyFriendInfo();
 //        Console.WriteLine(Address);
 //        Console.WriteLine(Phone_Number);
 //    }
@@ -2006,106 +2011,140 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 // 문제 2 
 
-//ColorTv colorTv = new ColorTv();
+//TV colorTv = new ColorTv();
 
-//colorTv.printProperty();
+//colorTv.PrintProperty();
+
+////TV tv = new TV();
+////tv.PrintProperty();
 
 //class TV
 //{
 //    protected int inch = 32;
 //    protected int Pixel = 1024;
+
+//    public TV()
+//    {
+//       inch = 16;
+//       Pixel = 512;
+//    }
+
+//    public virtual void PrintProperty()
+//    {
+//        Console.WriteLine(inch + "인치" + " " + Pixel + "흑백 출력");
+//    }
 //}
 
 //class ColorTv : TV
 //{
-//    public void printProperty()
+//    public ColorTv()
 //    {
-//        Console.WriteLine(inch + "인치" + Pixel + "컬러출력");
+//        inch = 32;
+//        Pixel = 1024;
+//    }
+//    public override void PrintProperty()
+//    {
+//        Console.WriteLine(inch + "인치" + " " + Pixel + "컬러 출력");
 //    }
 //}
 
 // 문제 3 
-
-
-//IPTV iPTV = new IPTV();
+//int a = 0;
+//int b = 0;
+//TV iPTV = new IPTV(20,30,"192.168.219.0");
 //iPTV.printProperty();
+
 
 //class TV
 //{
-//    protected int inch = 32;
-//    protected int Pixel = 1024;
-//}
+//    protected int inch = 16;
+//    protected int pixel = 512;
 
-//class ColorTv : TV
-//{
+//    public TV()
+//    {
+
+//    }
+//    public TV(int _inch, int _pixel)
+//    {
+//        inch = _inch;
+//        pixel = _pixel;
+//    }
+
+
 //    public virtual void printProperty()
 //    {
-//        Console.WriteLine(inch + "인치" + Pixel + "컬러출력");
+//        Console.WriteLine(inch + "인치" + pixel + "흑백출력");
 //    }
 //}
-
-//class IPTV : ColorTv
-//{
-//    private string Address = "192.1.1.2";
-
-//    public IPTV()
+//    class ColorTv : TV
 //    {
-//        Pixel = 2048;
+
+//        public ColorTv(int _inch, int _pixel) :base(_inch, _pixel)
+//        {
+
+//        }
+
+//        public override void printProperty()
+//        {
+
+//            Console.WriteLine(inch + "인치" + pixel + "컬러출력");
+//        }
 //    }
 
+//    class IPTV : ColorTv
+//    {
+//        private string Address = "192.1.1.2";
 
-//    public override void printProperty()
-//    {     
-//        Console.WriteLine("나의 IPTV는"+ Address + "주소의" + inch + "인치" + Pixel + "컬러출력");
+//        public IPTV(int _inch, int _pixel,string _str) : base(_inch, _pixel)
+//        {
+//            Address = _str;
+
+//        }
+
+
+
+//        public override void printProperty()
+//        {
+
+//            Console.Write("나의 IPTV는" + Address + "주소의");
+//            base.printProperty();
+//        }
+
 //    }
-
-//}
 
 
 // 문제 4 
 
-//Converter convert = new Converter();
 
 //Won2Dollor won2Dollor = new Won2Dollor();
 //won2Dollor.Print_Reselt();
 
-//class Converter
-//{
-//    protected float Dollor = 0;
+Converter converter = new Km2Mile();
+converter.Print_Result();
 
-//    void Print_Change_Won_To_Dollor()
-//    {
-//        Console.WriteLine("원을 달러로 바꿉니다");
-//        Console.WriteLine("원을 입력하세요");
-//    }
+class Converter
+{
+    public virtual float Conver_Number(float ratio)
+    {
+        return Change_Str_To_Number() * ratio;
+    } 
+    int Change_Str_To_Number()
+    {
+        string Str_Num = Console.ReadLine();
+        int Num = int.Parse(Str_Num);
+        return Num;
+    }
 
-//    void Change_Str_To_Number()
-//    {
-//        System.String Str_Won = Console.ReadLine();
+    public virtual void Print_Result()
+    {
+       
+    }
 
-//        Dollor = float.Parse(Str_Won) / 1200;
-//    }
-
-
-//    public Converter()
-//    {
-//        Print_Change_Won_To_Dollor();
-//        Change_Str_To_Number();
-//    }
-//}
-//class Won2Dollor : Converter
-//{
-//    public void Print_Reselt()
-//    {
-//        Console.WriteLine("변환결과 :" + Dollor + "달러입니다");
-//        Console.WriteLine();
-//    }
-//}
+    
+}
 
 // 문제 5 
 
-//Km2Mile km2Mile = new Km2Mile();
-//km2Mile.Print_Result();
 
 //class Converter
 //{
@@ -2140,15 +2179,47 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //        Change_Km_To_Mile();
 //    }
 //}
-//class Km2Mile : Converter
-//{
-//    public void Print_Result()
-//    {
+class Km2Mile : Converter
+{
+    private float Mile = 0;
 
-//        Console.WriteLine("변환결과 :" + Mile + "입니다");
+    public void Print_Km_To_Mile()
+    {
+        Console.WriteLine("Km를 Mile로 바꿉니다");
+        Console.WriteLine("km를 입력해주세요");
+    }
 
-//    }
-//}
+    public Km2Mile()
+    {
+        Print_Km_To_Mile();
+        Mile = Conver_Number(1.6f);
+    } 
+
+    public override void Print_Result()
+    {
+        Console.WriteLine("변환결과 :" + Mile + "입니다");
+    }
+}
+
+class Won2Dollor : Converter
+{
+    public void Print_Change_Won_To_Dollor()
+    {
+        Console.WriteLine("원을 달러로 바꿉니다");
+        Console.WriteLine("원을 입력하세요");
+    }
+
+    public Won2Dollor()
+    {
+        Print_Change_Won_To_Dollor();
+        Change_Won_To_Dollor();
+    }
+    public override void Print_Result()
+    {
+        Console.WriteLine("변환결과 :" + Dollor + "달러입니다");
+        Console.WriteLine();
+    }
+}
 
 // 문제 6
 
@@ -2608,38 +2679,40 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //#define PROD_ENV
 
+//bool check = Manager.Is_Cheat_Mode();
+
+//if(check == true)
+//{
+//    Console.WriteLine("치트모드입니다");
+//}
+//else
+//{
+//    Console.WriteLine("치트모드가 아닙니다");
+//}
+
+//class Manager
+//{
 
 
+//    static public bool Is_Cheat_Mode()
+//    {
+//        #if (TEST_ENV)
+//        {         
+//            return true;
+//        }
 
-class Manager
-{
+//        #else
+//        {   
+//           return false;
+//        }
 
-    static public void CheatMode_On()
-    {
-        #if (TEST_ENV)
-        {
-            Console.WriteLine("치트모드 활성화");
-        }
-        #endif
-        {
+//        #endif
 
-        }
-    }
+//    }
 
-    static public void CheatMode_Off()
-    {
-        
 
-        #if (TEST_ENV == false)
-        {
-             Console.WriteLine("치트모드 비활성화");
-        }
-        #endif
-        {
+//}
 
-        }
-    }
-}
 
 
 
